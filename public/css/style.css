@@ -1,0 +1,123 @@
+/* Vovó Linlin — identidade tirada da arte: creme, marrom, dourado, giz. */
+:root {
+  --creme: #f8eed9;
+  --creme-2: #f2e2c4;
+  --marrom: #4a2c1a;
+  --marrom-2: #6b3f22;
+  --dourado: #e0a33c;
+  --lousa: #2a2521;
+  --giz: #f0ece2;
+  --branco: #fffdf7;
+  --zap: #22a95c;
+  --display: "Lobster Two", cursive;
+  --texto: "Nunito", system-ui, sans-serif;
+  --giz-fonte: "Patrick Hand", cursive;
+}
+* { box-sizing: border-box; margin: 0; }
+body {
+  font-family: var(--texto); color: var(--marrom);
+  background: var(--creme); line-height: 1.6; font-size: 17px;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--marrom-2); }
+
+.topo {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.5rem 1rem; background: var(--creme);
+  border-bottom: 2px solid var(--creme-2);
+}
+.marca { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+.marca img { border-radius: 50%; }
+.marca span { font-family: var(--display); font-weight: 700; font-size: 1.3rem; color: var(--marrom); }
+
+.btn-zap {
+  display: inline-block; background: var(--zap); color: #fff;
+  font-weight: 800; text-decoration: none; text-align: center;
+  padding: 0.55rem 1.2rem; border-radius: 99px; border: 0;
+  font-size: 1rem; cursor: pointer; font-family: var(--texto);
+}
+.btn-zap:hover { filter: brightness(1.07); }
+.btn-zap.grande { padding: 0.9rem 1.6rem; font-size: 1.1rem; width: 100%; }
+
+main { max-width: 62rem; margin: 0 auto; padding: 0 1rem; }
+
+.hero {
+  display: grid; gap: 1.5rem; align-items: center;
+  grid-template-columns: 1fr; padding: 2rem 0 2.5rem;
+}
+@media (min-width: 760px) { .hero { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
+.hero-arte img { max-width: 26rem; margin: 0 auto; }
+.credito { text-align: center; font-size: 0.85rem; color: var(--marrom-2); margin-top: 0.4rem; }
+.hero-texto h1 {
+  font-family: var(--display); font-size: clamp(2rem, 5vw, 2.9rem);
+  line-height: 1.15; text-wrap: balance;
+}
+.hero-texto h1 em { color: var(--dourado); font-style: normal; }
+.hero-texto .sub { margin: 0.8rem 0 1.2rem; max-width: 34rem; }
+
+.lousa {
+  background: var(--lousa); color: var(--giz);
+  font-family: var(--giz-fonte); font-size: 1.35rem; line-height: 1.5;
+  border: 8px solid var(--marrom-2); border-radius: 6px;
+  padding: 1rem 1.4rem; margin-bottom: 1.3rem; max-width: 24rem;
+  transform: rotate(-1.5deg);
+}
+.lousa ul { list-style: none; padding: 0; }
+.lousa li::before { content: "✓ "; }
+
+.faixa {
+  height: 18px; margin: 0 -1rem;
+  background:
+    repeating-linear-gradient(90deg, var(--creme-2) 0 12px, transparent 12px 24px),
+    repeating-linear-gradient(0deg, var(--creme-2) 0 6px, transparent 6px 12px),
+    var(--dourado);
+  opacity: 0.55;
+}
+
+section { padding: 2.5rem 0; }
+h2 { font-family: var(--display); font-size: 1.9rem; margin-bottom: 0.4rem; }
+.dica { color: var(--marrom-2); margin-bottom: 1.4rem; }
+
+.produtos { display: grid; gap: 0.8rem; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .produtos { grid-template-columns: 1fr 1fr; } }
+.produto {
+  background: var(--branco); border: 2px solid var(--creme-2); border-radius: 14px;
+  padding: 1rem 1.2rem; display: flex; flex-direction: column; gap: 0.3rem;
+}
+.produto h3 { font-size: 1.1rem; }
+.produto .desc { font-size: 0.9rem; color: var(--marrom-2); }
+.produto .linha { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; }
+.produto .preco { font-weight: 800; font-size: 1.15rem; }
+.stepper { display: flex; align-items: center; gap: 0.7rem; }
+.stepper button {
+  width: 2.2rem; height: 2.2rem; border-radius: 50%; border: 2px solid var(--marrom-2);
+  background: var(--branco); color: var(--marrom); font-size: 1.2rem; font-weight: 800;
+  cursor: pointer; line-height: 1;
+}
+.stepper button:hover { background: var(--creme-2); }
+.stepper .qtd { min-width: 1.5rem; text-align: center; font-weight: 800; font-variant-numeric: tabular-nums; }
+
+.resumo {
+  position: sticky; bottom: 0.8rem; margin-top: 1.2rem;
+  background: var(--marrom); color: var(--creme); border-radius: 14px;
+  padding: 1rem 1.2rem; box-shadow: 0 8px 24px rgba(74,44,26,0.35);
+}
+.resumo-linha { display: flex; justify-content: space-between; font-size: 1.05rem; margin-bottom: 0.7rem; }
+.resumo .mini { font-size: 0.8rem; opacity: 0.8; margin-top: 0.5rem; }
+
+.como ol { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; max-width: 34rem; }
+.sobre p { max-width: 38rem; margin-bottom: 0.7rem; }
+
+footer {
+  margin-top: 2rem; padding: 1.6rem 1rem 2.2rem; text-align: center;
+  background: var(--marrom); color: var(--creme);
+}
+footer a { color: var(--dourado); }
+footer .mini { font-size: 0.8rem; opacity: 0.75; margin-top: 0.4rem; }
+.stepper input.qtd {
+  width: 3.4rem; text-align: center; font-weight: 800; font-size: 1rem;
+  border: 2px solid var(--creme-2); border-radius: 8px; padding: 0.3rem 0.2rem;
+  font-family: var(--texto); -moz-appearance: textfield; appearance: textfield;
+}
+.stepper input.qtd::-webkit-outer-spin-button, .stepper input.qtd::-webkit-inner-spin-button { -webkit-appearance: none; }

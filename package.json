@@ -1,0 +1,26 @@
+{
+  "name": "vovolinlin",
+  "version": "1.0.0",
+  "description": "Site e caderninho de pedidos da Vovó Linlin Pão de Queijo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@hono/node-server": "^2.1.0",
+    "hono": "^4.13.1",
+    "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@types/pg": "^8.21.0",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  }
+}

@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://vovo:${DB_PASSWORD:-vovo}@db:5432/vovolinlin
+      VOVO_PIN: ${VOVO_PIN:-1234}
+      APP_SECRET: ${APP_SECRET:-troque-isto}
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vovo
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-vovo}
+      POSTGRES_DB: vovolinlin
+    volumes:
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - pgdata:/var/lib/postgresql/data
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+    depends_on:
+      - app
+
+volumes:
+  pgdata:
+  caddy_data:

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vovó Linlin — Pão de Queijo</title>
+  <meta name="description" content="Pão de queijo artesanal feito com amor. Encomendas pelo WhatsApp: congelado ou assado na hora. São Paulo." />
+  <meta property="og:title" content="Vovó Linlin — Pão de Queijo" />
+  <meta property="og:description" content="Crocante por fora, macio por dentro. Encomende pelo WhatsApp." />
+  <meta property="og:image" content="https://vovolinlin.blictech.com.br/assets/logo.png" />
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;600;800&family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="topo">
+  <a class="marca" href="#inicio">
+    <img src="assets/logo.png" alt="Logo da Vovó Linlin" width="44" height="44" />
+    <span>vovó linlin</span>
+  </a>
+  <a class="btn-zap" href="https://wa.me/5511952855997?text=Ol%C3%A1%2C%20vov%C3%B3%20Linlin!%20Quero%20encomendar%20p%C3%A3o%20de%20queijo%20%F0%9F%A7%80" target="_blank" rel="noreferrer">
+    Encomendar
+  </a>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-arte">
+      <img src="assets/logo.png" alt="Vovó Linlin segurando uma colher de pau ao lado de uma cesta de pães de queijo. Arte feita pelo neto." />
+      <p class="credito">arte: feita pelo neto da vovó ♡</p>
+    </div>
+    <div class="hero-texto">
+      <h1>Pão de queijo <em>feito com amor</em></h1>
+      <p class="sub">Do tradicional ao recheado especial, vendido por unidade. Encomendou, a vovó prepara.</p>
+      <div class="lousa" role="img" aria-label="Lousa escrita a giz com as qualidades do pão de queijo">
+        <ul>
+          <li>Crocante por fora</li>
+          <li>Macio por dentro</li>
+          <li>Queijos selecionados</li>
+        </ul>
+      </div>
+      <a class="btn-zap grande" href="#pedido">Montar meu pedido ↓</a>
+    </div>
+  </section>
+
+  <section class="faixa" aria-hidden="true"></section>
+
+  <section class="cardapio" id="pedido">
+    <h2>Monte seu pedido</h2>
+    <p class="dica">Escolha as quantidades e envie direto no WhatsApp da vovó. Ela responde rapidinho.</p>
+
+    <div class="produtos" id="produtos"></div>
+
+    <div class="resumo" id="resumo" hidden>
+      <div class="resumo-linha">
+        <span id="resumo-itens">0 itens</span>
+        <strong id="resumo-total">R$ 0,00</strong>
+      </div>
+      <button class="btn-zap grande" id="enviar">Enviar pedido no WhatsApp</button>
+      <p class="mini">O pedido abre no seu WhatsApp já escrito. Pagamento e entrega você combina com a vovó.</p>
+    </div>
+  </section>
+
+  <section class="como">
+    <h2>Como funciona</h2>
+    <ol>
+      <li><strong>Você pede</strong> aqui pelo site ou direto no WhatsApp.</li>
+      <li><strong>A vovó prepara</strong>: congelado pra assar em casa ou assado na hora.</li>
+      <li><strong>Retirada ou entrega</strong>, é só combinar com ela no zap.</li>
+    </ol>
+  </section>
+
+  <section class="sobre">
+    <div class="sobre-texto">
+      <h2>Quem é a Vovó Linlin?</h2>
+      <p>Receita de família, mão de vó e queijo de verdade. Cada fornada sai do jeito que pão de queijo tem que ser: crocante por fora, macio e puxento por dentro.</p>
+      <p>Feito em casa, em São Paulo, com carinho de vó em cada bolinha.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p><strong>Encomendas:</strong> <a href="https://wa.me/5511952855997" target="_blank" rel="noreferrer">(11) 95285-5997</a> · São Paulo, SP</p>
+  <p class="mini">© <span id="ano"></span> Vovó Linlin Pão de Queijo · <a href="https://leonardoflores.dev.br" target="_blank" rel="noreferrer">desenvolvido com carinho por Leonardo Flores</a></p>
+</footer>
+
+<script src="js/pedido.js"></script>
+</body>
+</html>

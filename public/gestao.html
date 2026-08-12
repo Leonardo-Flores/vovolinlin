@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Caderninho da Vovó</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" href="/assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --creme:#f8eed9; --creme2:#f2e2c4; --marrom:#4a2c1a; --marrom2:#6b3f22;
+    --dourado:#e0a33c; --branco:#fffdf7; --verde:#2e8b57; --vermelho:#b3453a;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: "Nunito", system-ui, sans-serif; background: var(--creme); color: var(--marrom); font-size: 18px; line-height: 1.5; }
+  header { display:flex; align-items:center; gap:0.7rem; padding:0.8rem 1rem; background:var(--branco); border-bottom:2px solid var(--creme2); }
+  header img { width:44px; height:44px; border-radius:50%; }
+  header h1 { font-family:"Lobster Two",cursive; font-size:1.4rem; }
+  main { max-width: 46rem; margin: 0 auto; padding: 1rem; }
+
+  .abas { display:flex; gap:0.5rem; margin:0.5rem 0 1.2rem; }
+  .abas button {
+    flex:1; padding:0.8rem 0.4rem; font:inherit; font-weight:800; font-size:1rem;
+    border:2px solid var(--marrom2); border-radius:12px; background:var(--branco); color:var(--marrom); cursor:pointer;
+  }
+  .abas button[aria-selected="true"] { background: var(--marrom); color: var(--creme); }
+
+  .cartao { background:var(--branco); border:2px solid var(--creme2); border-radius:14px; padding:1rem 1.2rem; margin-bottom:0.8rem; }
+  h2 { font-family:"Lobster Two",cursive; font-size:1.5rem; margin-bottom:0.6rem; }
+  label { display:block; font-weight:800; font-size:0.95rem; margin:0.6rem 0 0.2rem; }
+  input, textarea {
+    width:100%; padding:0.7rem 0.8rem; font:inherit; font-size:1.05rem;
+    border:2px solid var(--creme2); border-radius:10px; background:#fff;
+  }
+  input:focus, textarea:focus { outline:none; border-color:var(--dourado); }
+  .botao {
+    display:inline-block; width:100%; padding:0.9rem; margin-top:0.9rem; font:inherit; font-size:1.1rem; font-weight:800;
+    background:var(--verde); color:#fff; border:0; border-radius:12px; cursor:pointer;
+  }
+  .botao.marrom { background:var(--marrom); }
+  .botao.claro { background:var(--branco); color:var(--marrom); border:2px solid var(--marrom2); }
+  .botao:disabled { opacity:0.5; }
+
+  .linha-prod { display:flex; align-items:center; justify-content:space-between; gap:0.6rem; padding:0.55rem 0; border-bottom:1px dashed var(--creme2); }
+  .linha-prod:last-child { border-bottom:0; }
+  .stepper { display:flex; align-items:center; gap:0.6rem; }
+  .stepper button { width:2.4rem; height:2.4rem; border-radius:50%; border:2px solid var(--marrom2); background:var(--branco); font-size:1.3rem; font-weight:800; color:var(--marrom); cursor:pointer; }
+  .stepper span { min-width:1.6rem; text-align:center; font-weight:800; font-variant-numeric:tabular-nums; }
+
+  .pedido { display:flex; flex-direction:column; gap:0.25rem; }
+  .pedido .topo-p { display:flex; justify-content:space-between; align-items:baseline; gap:0.5rem; }
+  .pedido .quando { color:var(--marrom2); font-size:0.85rem; }
+  .pedido .itens { font-size:0.95rem; color:var(--marrom2); }
+  .pedido .acoes { display:flex; gap:0.5rem; margin-top:0.5rem; }
+  .pedido .acoes button { flex:1; padding:0.5rem; font:inherit; font-weight:800; font-size:0.9rem; border-radius:10px; border:2px solid var(--creme2); background:var(--branco); cursor:pointer; }
+  .selo { font-size:0.75rem; font-weight:800; padding:0.1rem 0.6rem; border-radius:99px; }
+  .selo.aberto { background:var(--dourado); color:var(--marrom); }
+  .selo.entregue { background:var(--verde); color:#fff; }
+  .selo.cancelado { background:var(--vermelho); color:#fff; }
+
+  .kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin-bottom:0.8rem; }
+  .kpi { background:var(--branco); border:2px solid var(--creme2); border-radius:14px; padding:0.8rem; text-align:center; }
+  .kpi .n { font-weight:800; font-size:1.25rem; font-variant-numeric:tabular-nums; }
+  .kpi .t { font-size:0.8rem; color:var(--marrom2); }
+  table { width:100%; border-collapse:collapse; font-size:0.95rem; }
+  th, td { text-align:left; padding:0.5rem 0.4rem; border-bottom:1px dashed var(--creme2); }
+  td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
+  .destaque { background: #f6ecd4; }
+  .obs-mini { font-size:0.85rem; color:var(--marrom2); margin-top:0.6rem; }
+
+  #tela-pin { max-width:22rem; margin:15vh auto; text-align:center; }
+  #tela-pin img { width:110px; height:110px; border-radius:50%; margin:0 auto 1rem; }
+  #tela-pin input { text-align:center; font-size:1.6rem; letter-spacing:0.4rem; }
+  .erro { color:var(--vermelho); font-weight:800; margin-top:0.5rem; min-height:1.4rem; }
+  [hidden] { display:none !important; }
+</style>
+</head>
+<body>
+
+<div id="tela-pin">
+  <img src="/assets/logo.png" alt="Vovó Linlin" />
+  <h1 style="font-family:'Lobster Two',cursive">Caderninho da Vovó</h1>
+  <label for="pin">Digite sua senha</label>
+  <input id="pin" type="password" inputmode="numeric" autocomplete="current-password" />
+  <button class="botao" id="entrar">Entrar</button>
+  <p class="erro" id="pin-erro"></p>
+</div>
+
+<div id="app" hidden>
+<header>
+  <img src="/assets/logo.png" alt="" />
+  <h1>Caderninho da Vovó</h1>
+</header>
+<main>
+  <div class="abas" role="tablist">
+    <button role="tab" aria-selected="true" data-aba="pedidos">Pedidos</button>
+    <button role="tab" aria-selected="false" data-aba="produtos">Produtos</button>
+    <button role="tab" aria-selected="false" data-aba="mes">Meu mês</button>
+  </div>
+
+  <section id="aba-pedidos">
+    <div class="cartao">
+      <h2>Anotar pedido</h2>
+      <label for="cliente">Nome de quem pediu (se quiser)</label>
+      <input id="cliente" placeholder="ex.: Dona Maria do 302" />
+      <div id="novo-itens"></div>
+      <label for="obs">Recado</label>
+      <input id="obs" placeholder="ex.: entregar sábado de manhã" />
+      <button class="botao" id="salvar-pedido">Guardar no caderninho</button>
+    </div>
+    <div id="lista-pedidos"></div>
+  </section>
+
+  <section id="aba-produtos" hidden>
+    <div class="cartao">
+      <h2>Meus produtos</h2>
+      <p class="obs-mini">O <strong>custo</strong> é quanto você gasta pra fazer (queijo, polvilho, gás...). Com ele o caderninho te mostra o <strong>lucro</strong> de verdade.</p>
+      <div id="lista-produtos"></div>
+    </div>
+    <div class="cartao">
+      <h2>Cadastrar produto novo</h2>
+      <label for="np-nome">Nome</label>
+      <input id="np-nome" placeholder="ex.: Pão de queijo recheado — dúzia" />
+      <label for="np-preco">Preço de venda (R$)</label>
+      <input id="np-preco" inputmode="decimal" placeholder="ex.: 25,00" />
+      <label for="np-custo">Custo pra fazer (R$)</label>
+      <input id="np-custo" inputmode="decimal" placeholder="ex.: 9,50" />
+      <button class="botao" id="criar-produto">Cadastrar</button>
+    </div>
+  </section>
+
+  <section id="aba-mes" hidden>
+    <div class="kpis">
+      <div class="kpi"><div class="n" id="k-fat">—</div><div class="t">vendi</div></div>
+      <div class="kpi"><div class="n" id="k-custo">—</div><div class="t">gastei</div></div>
+      <div class="kpi"><div class="n" id="k-lucro">—</div><div class="t">sobrou (lucro)</div></div>
+    </div>
+    <div class="cartao">
+      <h2>O que mais sai</h2>
+      <table id="tabela-rank">
+        <thead><tr><th>Produto</th><th class="num">Vendi</th><th class="num">Total</th><th class="num">Lucro</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <p class="obs-mini" id="conselho"></p>
+    </div>
+  </section>
+</main>
+</div>
+
+<script>
+const R$ = (c) => (c/100).toLocaleString("pt-BR", { style:"currency", currency:"BRL" });
+const centavos = (s) => Math.round(parseFloat(String(s).replace(/\./g,"").replace(",", ".")) * 100) || 0;
+const $ = (id) => document.getElementById(id);
+const api = async (url, opts={}) => {
+  const r = await fetch(url, { headers:{ "content-type":"application/json" }, ...opts });
+  if (r.status === 401) { $("app").hidden = true; $("tela-pin").hidden = false; throw new Error("login"); }
+  return r.json();
+};
+
+let produtos = [];
+const novoPedido = new Map();
+
+// ---- login ----
+async function entrar() {
+  $("pin-erro").textContent = "";
+  const r = await fetch("/api/login", { method:"POST", headers:{ "content-type":"application/json" }, body: JSON.stringify({ pin: $("pin").value }) });
+  if (!r.ok) { $("pin-erro").textContent = "Senha errada, tenta de novo"; return; }
+  $("tela-pin").hidden = true; $("app").hidden = false;
+  carregarTudo();
+}
+$("entrar").addEventListener("click", entrar);
+$("pin").addEventListener("keydown", (e) => e.key === "Enter" && entrar());
+
+// ---- abas ----
+document.querySelectorAll("[data-aba]").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll("[data-aba]").forEach((x) => x.setAttribute("aria-selected", x === b));
+  ["pedidos","produtos","mes"].forEach((a) => $("aba-"+a).hidden = a !== b.dataset.aba);
+  if (b.dataset.aba === "mes") carregarMes();
+}));
+
+// ---- pedidos ----
+function renderNovoItens() {
+  const ativos = produtos.filter((p) => p.ativo);
+  $("novo-itens").innerHTML = "<label>O que ela(e) pediu?</label>" + ativos.map((p) => {
+    const q = novoPedido.get(p.id) ?? 0;
+    return `<div class="linha-prod"><span>${p.nome}<br><small>${R$(p.preco_cents)}</small></span>
+      <div class="stepper">
+        <button type="button" data-m="${p.id}">−</button><span>${q}</span><button type="button" data-p="${p.id}">+</button>
+      </div></div>`;
+  }).join("");
+}
+$("novo-itens").addEventListener("click", (e) => {
+  const mais = e.target.closest("[data-p]"); const menos = e.target.closest("[data-m]");
+  if (mais) novoPedido.set(+mais.dataset.p, (novoPedido.get(+mais.dataset.p) ?? 0) + 1);
+  if (menos) { const id = +menos.dataset.m, q = (novoPedido.get(id) ?? 0) - 1; q <= 0 ? novoPedido.delete(id) : novoPedido.set(id, q); }
+  if (mais || menos) renderNovoItens();
+});
+$("salvar-pedido").addEventListener("click", async () => {
+  if (novoPedido.size === 0) return alert("Marca pelo menos um produto, vovó :)");
+  await api("/api/pedidos", { method:"POST", body: JSON.stringify({
+    cliente: $("cliente").value, obs: $("obs").value,
+    itens: [...novoPedido].map(([produto_id, qtd]) => ({ produto_id, qtd })),
+  })});
+  $("cliente").value = ""; $("obs").value = ""; novoPedido.clear();
+  renderNovoItens(); carregarPedidos();
+});
+
+async function carregarPedidos() {
+  const pedidos = await api("/api/pedidos");
+  $("lista-pedidos").innerHTML = pedidos.map((p) => `
+    <div class="cartao pedido">
+      <div class="topo-p">
+        <strong>${p.cliente || "Sem nome"}</strong>
+        <span class="selo ${p.status}">${p.status}</span>
+      </div>
+      <span class="quando">${new Date(p.criado_em).toLocaleString("pt-BR", { day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit" })}</span>
+      <span class="itens">${p.itens.map((i) => `${i.qtd}x ${i.nome}`).join(" · ")}</span>
+      ${p.obs ? `<span class="itens">📝 ${p.obs}</span>` : ""}
+      <strong>${R$(p.total_cents)}</strong>
+      ${p.status === "aberto" ? `<div class="acoes">
+        <button data-st="entregue" data-id="${p.id}">Entreguei ✓</button>
+        <button data-st="cancelado" data-id="${p.id}">Cancelar</button>
+      </div>` : ""}
+    </div>`).join("") || '<p class="obs-mini">Nenhum pedido anotado ainda.</p>';
+}
+$("lista-pedidos").addEventListener("click", async (e) => {
+  const b = e.target.closest("[data-st]");
+  if (!b) return;
+  await api(`/api/pedidos/${b.dataset.id}/status`, { method:"PUT", body: JSON.stringify({ status: b.dataset.st }) });
+  carregarPedidos();
+});
+
+// ---- produtos ----
+function renderProdutos() {
+  $("lista-produtos").innerHTML = produtos.map((p) => {
+    const lucro = p.preco_cents - p.custo_cents;
+    return `<div class="linha-prod">
+      <span>${p.ativo ? "" : "⏸ "}${p.nome}<br>
+        <small>vende por ${R$(p.preco_cents)} · custa ${R$(p.custo_cents)} · <strong>sobra ${R$(lucro)}</strong></small></span>
+      <button class="botao claro" style="width:auto;margin:0;padding:0.4rem 0.8rem;font-size:0.85rem" data-edit="${p.id}">Mudar</button>
+    </div>`;
+  }).join("");
+}
+$("lista-produtos").addEventListener("click", async (e) => {
+  const b = e.target.closest("[data-edit]");
+  if (!b) return;
+  const p = produtos.find((x) => x.id === +b.dataset.edit);
+  const nome = prompt("Nome do produto:", p.nome); if (nome === null) return;
+  const preco = prompt("Preço de venda (R$):", (p.preco_cents/100).toFixed(2).replace(".", ",")); if (preco === null) return;
+  const custo = prompt("Custo pra fazer (R$):", (p.custo_cents/100).toFixed(2).replace(".", ",")); if (custo === null) return;
+  const ativo = confirm("Deixar esse produto à venda? (OK = sim, Cancelar = pausar)");
+  await api(`/api/produtos/${p.id}`, { method:"PUT", body: JSON.stringify({ nome, preco_cents: centavos(preco), custo_cents: centavos(custo), ativo }) });
+  await carregarProdutos();
+});
+$("criar-produto").addEventListener("click", async () => {
+  const nome = $("np-nome").value.trim();
+  if (!nome) return alert("Escreve o nome do produto :)");
+  await api("/api/produtos", { method:"POST", body: JSON.stringify({ nome, preco_cents: centavos($("np-preco").value), custo_cents: centavos($("np-custo").value) }) });
+  $("np-nome").value = $("np-preco").value = $("np-custo").value = "";
+  await carregarProdutos();
+});
+async function carregarProdutos() {
+  produtos = await api("/api/produtos");
+  renderProdutos(); renderNovoItens();
+}
+
+// ---- mês ----
+async function carregarMes() {
+  const r = await api("/api/resumo");
+  $("k-fat").textContent = R$(r.faturamento_cents);
+  $("k-custo").textContent = R$(r.custo_cents);
+  $("k-lucro").textContent = R$(r.lucro_cents);
+  const corpo = document.querySelector("#tabela-rank tbody");
+  const maisLucro = [...r.ranking].sort((a, b) => b.lucro_cents - a.lucro_cents)[0];
+  corpo.innerHTML = r.ranking.map((x) => `
+    <tr class="${maisLucro && x.nome === maisLucro.nome ? "destaque" : ""}">
+      <td>${x.nome}</td><td class="num">${x.qtd}</td>
+      <td class="num">${R$(x.faturamento_cents)}</td><td class="num">${R$(x.lucro_cents)}</td>
+    </tr>`).join("") || '<tr><td colspan="4">Sem vendas neste mês ainda.</td></tr>';
+  $("conselho").textContent = maisLucro
+    ? `💡 O que mais deixa dinheiro no seu bolso é: ${maisLucro.nome}. A linha pintada é ele.`
+    : "";
+}
+
+async function carregarTudo() { await carregarProdutos(); await carregarPedidos(); }
+
+// se já tem cookie válido, pula o PIN
+api("/api/produtos").then((ps) => { produtos = ps; $("tela-pin").hidden = true; $("app").hidden = false; renderProdutos(); renderNovoItens(); carregarPedidos(); }).catch(() => {});
+</script>
+</body>
+</html>
