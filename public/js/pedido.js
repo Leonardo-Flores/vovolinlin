@@ -30,7 +30,7 @@ function render() {
     const el = document.createElement("article");
     el.className = "produto";
     el.innerHTML = `
-      <div class="foto">
+      <div class="foto" data-card="${p.id}" role="button" tabindex="0" aria-label="Adicionar 1 ${p.nome}">
         ${p.destaque ? '<span class="badge">❤ queridinho</span>' : ""}
         ${p.promo_cents ? '<span class="badge promo">promoção</span>' : ""}
         ${p.foto
@@ -78,14 +78,27 @@ function setQtd(prodId, sabor, q) {
 document.addEventListener("click", (e) => {
   const sab = e.target.closest(".sabor");
   if (sab) { saborEscolhido.set(Number(sab.dataset.prod), sab.dataset.sabor); render(); return; }
+  const card = e.target.closest("[data-card]");
   const mais = e.target.closest("[data-mais]");
   const menos = e.target.closest("[data-menos]");
-  if (mais || menos) {
-    const id = Number((mais ?? menos).dataset[mais ? "mais" : "menos"]);
+  if (card || mais || menos) {
+    const id = Number(card ? card.dataset.card : (mais ?? menos).dataset[mais ? "mais" : "menos"]);
     const sabor = saborEscolhido.get(id) ?? "";
-    setQtd(id, sabor, (carrinho.get(chave(id, sabor)) ?? 0) + (mais ? 1 : -1));
+    setQtd(id, sabor, (carrinho.get(chave(id, sabor)) ?? 0) + (menos ? -1 : 1));
     render();
+    if (card || mais) pulsar(id);
   }
+});
+
+// feedback visual: número da quantidade dá uma pulsada ao adicionar
+function pulsar(id) {
+  const input = document.querySelector(`[data-qtd="${id}"]`);
+  if (!input || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  input.animate([{ transform: "scale(1.25)" }, { transform: "scale(1)" }], { duration: 180, easing: "ease-out" });
+}
+document.addEventListener("keydown", (e) => {
+  const card = e.target.closest?.("[data-card]");
+  if (card && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); card.click(); }
 });
 document.addEventListener("change", (e) => {
   const input = e.target.closest("[data-qtd]");

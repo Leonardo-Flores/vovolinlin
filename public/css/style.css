@@ -124,7 +124,10 @@ h2 { font-family: var(--display); font-size: 1.9rem; margin-bottom: 0.3rem; text
 .produto .foto {
   height: 150px; background: var(--creme-2); position: relative;
   display: flex; align-items: center; justify-content: center; overflow: hidden;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
 }
+.produto .foto:hover img.ilustra, .produto .foto:hover img.real { transform: scale(1.06); }
+.produto .foto img { transition: transform 0.18s ease; }
 .produto .foto img.real { width: 100%; height: 100%; object-fit: cover; }
 .produto .foto img.ilustra { width: 84px; opacity: 0.9; filter: drop-shadow(0 6px 10px rgba(69,41,26,0.25)); }
 .badge {
