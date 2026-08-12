@@ -11,67 +11,80 @@
 <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --creme:#f8eed9; --creme2:#f2e2c4; --marrom:#4a2c1a; --marrom2:#6b3f22;
-    --dourado:#e0a33c; --branco:#fffdf7; --verde:#2e8b57; --vermelho:#b3453a;
+    --creme:#f8eed9; --creme2:#efdfc0; --marrom:#45291a; --marrom2:#6b3f22;
+    --dourado:#dd9f36; --branco:#fffdf7; --verde:#2e8b57; --vermelho:#b3453a; --azul:#3a6ea5;
   }
   * { box-sizing: border-box; margin: 0; }
   body { font-family: "Nunito", system-ui, sans-serif; background: var(--creme); color: var(--marrom); font-size: 18px; line-height: 1.5; }
-  header { display:flex; align-items:center; gap:0.7rem; padding:0.8rem 1rem; background:var(--branco); border-bottom:2px solid var(--creme2); }
+  header { display:flex; align-items:center; gap:0.7rem; padding:0.8rem 1rem; background:var(--branco); border-bottom:2px solid var(--creme2); position:sticky; top:0; z-index:5; }
   header img { width:44px; height:44px; border-radius:50%; }
-  header h1 { font-family:"Lobster Two",cursive; font-size:1.4rem; }
-  main { max-width: 46rem; margin: 0 auto; padding: 1rem; }
+  header h1 { font-family:"Lobster Two",cursive; font-size:1.35rem; }
+  main { max-width: 46rem; margin: 0 auto; padding: 1rem 1rem 4rem; }
 
   .abas { display:flex; gap:0.5rem; margin:0.5rem 0 1.2rem; }
   .abas button {
-    flex:1; padding:0.8rem 0.4rem; font:inherit; font-weight:800; font-size:1rem;
+    flex:1; padding:0.8rem 0.3rem; font:inherit; font-weight:800; font-size:0.95rem;
     border:2px solid var(--marrom2); border-radius:12px; background:var(--branco); color:var(--marrom); cursor:pointer;
   }
   .abas button[aria-selected="true"] { background: var(--marrom); color: var(--creme); }
 
   .cartao { background:var(--branco); border:2px solid var(--creme2); border-radius:14px; padding:1rem 1.2rem; margin-bottom:0.8rem; }
+  .cartao.novo-site { border-color: var(--azul); box-shadow: 0 0 0 2px rgba(58,110,165,0.25); }
   h2 { font-family:"Lobster Two",cursive; font-size:1.5rem; margin-bottom:0.6rem; }
-  label { display:block; font-weight:800; font-size:0.95rem; margin:0.6rem 0 0.2rem; }
+  label { display:block; font-weight:800; font-size:0.92rem; margin:0.6rem 0 0.2rem; }
   input, textarea {
     width:100%; padding:0.7rem 0.8rem; font:inherit; font-size:1.05rem;
-    border:2px solid var(--creme2); border-radius:10px; background:#fff;
+    border:2px solid var(--creme2); border-radius:10px; background:#fff; color:var(--marrom);
   }
   input:focus, textarea:focus { outline:none; border-color:var(--dourado); }
+  input[type="checkbox"] { width:auto; transform:scale(1.4); margin-right:0.5rem; }
+  .check { display:flex; align-items:center; margin-top:0.7rem; font-weight:800; font-size:0.95rem; }
   .botao {
-    display:inline-block; width:100%; padding:0.9rem; margin-top:0.9rem; font:inherit; font-size:1.1rem; font-weight:800;
+    display:inline-block; width:100%; padding:0.9rem; margin-top:0.9rem; font:inherit; font-size:1.05rem; font-weight:800;
     background:var(--verde); color:#fff; border:0; border-radius:12px; cursor:pointer;
   }
-  .botao.marrom { background:var(--marrom); }
   .botao.claro { background:var(--branco); color:var(--marrom); border:2px solid var(--marrom2); }
   .botao:disabled { opacity:0.5; }
 
   .linha-prod { display:flex; align-items:center; justify-content:space-between; gap:0.6rem; padding:0.55rem 0; border-bottom:1px dashed var(--creme2); }
   .linha-prod:last-child { border-bottom:0; }
   .stepper { display:flex; align-items:center; gap:0.6rem; }
-  .stepper button { width:2.4rem; height:2.4rem; border-radius:50%; border:2px solid var(--marrom2); background:var(--branco); font-size:1.3rem; font-weight:800; color:var(--marrom); cursor:pointer; }
-  .stepper span { min-width:1.6rem; text-align:center; font-weight:800; font-variant-numeric:tabular-nums; }
+  .stepper button { width:2.5rem; height:2.5rem; border-radius:50%; border:2px solid var(--marrom2); background:var(--branco); font-size:1.3rem; font-weight:800; color:var(--marrom); cursor:pointer; }
+  .stepper span { min-width:1.7rem; text-align:center; font-weight:800; font-variant-numeric:tabular-nums; }
 
   .pedido { display:flex; flex-direction:column; gap:0.25rem; }
-  .pedido .topo-p { display:flex; justify-content:space-between; align-items:baseline; gap:0.5rem; }
+  .pedido .topo-p { display:flex; justify-content:space-between; align-items:baseline; gap:0.5rem; flex-wrap:wrap; }
   .pedido .quando { color:var(--marrom2); font-size:0.85rem; }
   .pedido .itens { font-size:0.95rem; color:var(--marrom2); }
   .pedido .acoes { display:flex; gap:0.5rem; margin-top:0.5rem; }
-  .pedido .acoes button { flex:1; padding:0.5rem; font:inherit; font-weight:800; font-size:0.9rem; border-radius:10px; border:2px solid var(--creme2); background:var(--branco); cursor:pointer; }
-  .selo { font-size:0.75rem; font-weight:800; padding:0.1rem 0.6rem; border-radius:99px; }
+  .pedido .acoes button { flex:1; padding:0.6rem; font:inherit; font-weight:800; font-size:0.9rem; border-radius:10px; border:2px solid var(--creme2); background:var(--branco); color:var(--marrom); cursor:pointer; }
+  .selo { font-size:0.72rem; font-weight:800; padding:0.12rem 0.6rem; border-radius:99px; }
   .selo.aberto { background:var(--dourado); color:var(--marrom); }
   .selo.entregue { background:var(--verde); color:#fff; }
   .selo.cancelado { background:var(--vermelho); color:#fff; }
+  .selo.site { background:var(--azul); color:#fff; }
+  .selo.caderninho { background:var(--creme2); color:var(--marrom); }
+  .tel a { color:var(--verde); font-weight:800; text-decoration:none; }
+
+  details { border-top:1px dashed var(--creme2); padding:0.55rem 0; }
+  details:first-of-type { border-top:0; }
+  summary { cursor:pointer; font-weight:800; display:flex; justify-content:space-between; gap:0.5rem; list-style:none; }
+  summary::-webkit-details-marker { display:none; }
+  summary small { color:var(--marrom2); font-weight:600; }
+  .form-prod { padding:0.4rem 0 0.6rem; }
+  .duas { display:grid; grid-template-columns:1fr 1fr; gap:0 0.8rem; }
 
   .kpis { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem; margin-bottom:0.8rem; }
-  .kpi { background:var(--branco); border:2px solid var(--creme2); border-radius:14px; padding:0.8rem; text-align:center; }
-  .kpi .n { font-weight:800; font-size:1.25rem; font-variant-numeric:tabular-nums; }
-  .kpi .t { font-size:0.8rem; color:var(--marrom2); }
-  table { width:100%; border-collapse:collapse; font-size:0.95rem; }
-  th, td { text-align:left; padding:0.5rem 0.4rem; border-bottom:1px dashed var(--creme2); }
+  .kpi { background:var(--branco); border:2px solid var(--creme2); border-radius:14px; padding:0.8rem 0.4rem; text-align:center; }
+  .kpi .n { font-weight:800; font-size:1.15rem; font-variant-numeric:tabular-nums; }
+  .kpi .t { font-size:0.78rem; color:var(--marrom2); }
+  table { width:100%; border-collapse:collapse; font-size:0.92rem; }
+  th, td { text-align:left; padding:0.5rem 0.3rem; border-bottom:1px dashed var(--creme2); }
   td.num, th.num { text-align:right; font-variant-numeric:tabular-nums; }
-  .destaque { background: #f6ecd4; }
+  .destaque-linha { background:#f6ecd4; }
   .obs-mini { font-size:0.85rem; color:var(--marrom2); margin-top:0.6rem; }
 
-  #tela-pin { max-width:22rem; margin:15vh auto; text-align:center; }
+  #tela-pin { max-width:22rem; margin:12vh auto; text-align:center; padding:0 1rem; }
   #tela-pin img { width:110px; height:110px; border-radius:50%; margin:0 auto 1rem; }
   #tela-pin input { text-align:center; font-size:1.6rem; letter-spacing:0.4rem; }
   .erro { color:var(--vermelho); font-weight:800; margin-top:0.5rem; min-height:1.4rem; }
@@ -104,8 +117,11 @@
   <section id="aba-pedidos">
     <div class="cartao">
       <h2>Anotar pedido</h2>
-      <label for="cliente">Nome de quem pediu (se quiser)</label>
+      <p class="obs-mini">Os pedidos feitos pelo site já chegam sozinhos aqui embaixo, com selo azul. Este espaço é pra anotar quem pediu por fora (zap, vizinha, telefone).</p>
+      <label for="cliente">Nome de quem pediu</label>
       <input id="cliente" placeholder="ex.: Dona Maria do 302" />
+      <label for="telefone">WhatsApp (se tiver)</label>
+      <input id="telefone" inputmode="tel" placeholder="11 91234-5678" />
       <div id="novo-itens"></div>
       <label for="obs">Recado</label>
       <input id="obs" placeholder="ex.: entregar sábado de manhã" />
@@ -117,17 +133,21 @@
   <section id="aba-produtos" hidden>
     <div class="cartao">
       <h2>Meus produtos</h2>
-      <p class="obs-mini">O <strong>custo</strong> é quanto você gasta pra fazer (queijo, polvilho, gás...). Com ele o caderninho te mostra o <strong>lucro</strong> de verdade.</p>
+      <p class="obs-mini">O <strong>custo</strong> é quanto você gasta pra fazer uma unidade. Preencha certinho que o caderninho te conta o lucro de verdade. A <strong>foto</strong> aparece no site: tira uma foto bonita dos seus pães de verdade!</p>
       <div id="lista-produtos"></div>
     </div>
     <div class="cartao">
       <h2>Cadastrar produto novo</h2>
       <label for="np-nome">Nome</label>
-      <input id="np-nome" placeholder="ex.: Pão de queijo recheado — dúzia" />
-      <label for="np-preco">Preço de venda (R$)</label>
-      <input id="np-preco" inputmode="decimal" placeholder="ex.: 25,00" />
-      <label for="np-custo">Custo pra fazer (R$)</label>
-      <input id="np-custo" inputmode="decimal" placeholder="ex.: 9,50" />
+      <input id="np-nome" placeholder="ex.: Pão de queijo doce" />
+      <label for="np-desc">Descrição curta (aparece no site)</label>
+      <input id="np-desc" placeholder="ex.: novidade da casa!" />
+      <div class="duas">
+        <div><label for="np-preco">Preço (R$)</label><input id="np-preco" inputmode="decimal" placeholder="6,00" /></div>
+        <div><label for="np-custo">Custo (R$)</label><input id="np-custo" inputmode="decimal" placeholder="2,50" /></div>
+      </div>
+      <label for="np-sabores">Sabores (separados por vírgula, se tiver)</label>
+      <input id="np-sabores" placeholder="ex.: Goiabada, Doce de leite" />
       <button class="botao" id="criar-produto">Cadastrar</button>
     </div>
   </section>
@@ -152,7 +172,8 @@
 
 <script>
 const R$ = (c) => (c/100).toLocaleString("pt-BR", { style:"currency", currency:"BRL" });
-const centavos = (s) => Math.round(parseFloat(String(s).replace(/\./g,"").replace(",", ".")) * 100) || 0;
+const centavos = (s) => { const n = parseFloat(String(s).replace(/\./g,"").replace(",", ".")); return isNaN(n) ? 0 : Math.round(n * 100); };
+const fmtTel = (t) => t ? t.replace(/^(\d{2})(\d{4,5})(\d{4})$/, "($1) $2-$3") : "";
 const $ = (id) => document.getElementById(id);
 const api = async (url, opts={}) => {
   const r = await fetch(url, { headers:{ "content-type":"application/json" }, ...opts });
@@ -161,7 +182,7 @@ const api = async (url, opts={}) => {
 };
 
 let produtos = [];
-const novoPedido = new Map();
+const novoPedido = new Map(); // "produtoId|sabor" -> qtd
 
 // ---- login ----
 async function entrar() {
@@ -181,43 +202,56 @@ document.querySelectorAll("[data-aba]").forEach((b) => b.addEventListener("click
   if (b.dataset.aba === "mes") carregarMes();
 }));
 
-// ---- pedidos ----
+// ---- anotar pedido (linhas por produto+sabor) ----
+function linhasVenda() {
+  const linhas = [];
+  for (const p of produtos.filter((x) => x.ativo)) {
+    if (p.sabores.length) for (const s of p.sabores) linhas.push({ produto_id: p.id, sabor: s, rotulo: `${p.nome} · ${s}`, preco: p.promo_cents ?? p.preco_cents });
+    else linhas.push({ produto_id: p.id, sabor: "", rotulo: p.nome, preco: p.promo_cents ?? p.preco_cents });
+  }
+  return linhas;
+}
 function renderNovoItens() {
-  const ativos = produtos.filter((p) => p.ativo);
-  $("novo-itens").innerHTML = "<label>O que ela(e) pediu?</label>" + ativos.map((p) => {
-    const q = novoPedido.get(p.id) ?? 0;
-    return `<div class="linha-prod"><span>${p.nome}<br><small>${R$(p.preco_cents)}</small></span>
+  $("novo-itens").innerHTML = "<label>O que ela(e) pediu?</label>" + linhasVenda().map((l) => {
+    const k = `${l.produto_id}|${l.sabor}`;
+    const q = novoPedido.get(k) ?? 0;
+    return `<div class="linha-prod"><span>${l.rotulo}<br><small>${R$(l.preco)}</small></span>
       <div class="stepper">
-        <button type="button" data-m="${p.id}">−</button><span>${q}</span><button type="button" data-p="${p.id}">+</button>
+        <button type="button" data-m="${k}">−</button><span>${q}</span><button type="button" data-p="${k}">+</button>
       </div></div>`;
   }).join("");
 }
 $("novo-itens").addEventListener("click", (e) => {
   const mais = e.target.closest("[data-p]"); const menos = e.target.closest("[data-m]");
-  if (mais) novoPedido.set(+mais.dataset.p, (novoPedido.get(+mais.dataset.p) ?? 0) + 1);
-  if (menos) { const id = +menos.dataset.m, q = (novoPedido.get(id) ?? 0) - 1; q <= 0 ? novoPedido.delete(id) : novoPedido.set(id, q); }
+  if (mais) novoPedido.set(mais.dataset.p, (novoPedido.get(mais.dataset.p) ?? 0) + 1);
+  if (menos) { const k = menos.dataset.m, q = (novoPedido.get(k) ?? 0) - 1; q <= 0 ? novoPedido.delete(k) : novoPedido.set(k, q); }
   if (mais || menos) renderNovoItens();
 });
 $("salvar-pedido").addEventListener("click", async () => {
   if (novoPedido.size === 0) return alert("Marca pelo menos um produto, vovó :)");
   await api("/api/pedidos", { method:"POST", body: JSON.stringify({
-    cliente: $("cliente").value, obs: $("obs").value,
-    itens: [...novoPedido].map(([produto_id, qtd]) => ({ produto_id, qtd })),
+    cliente: $("cliente").value, telefone: $("telefone").value, obs: $("obs").value,
+    itens: [...novoPedido].map(([k, qtd]) => { const [produto_id, sabor] = k.split("|"); return { produto_id: +produto_id, sabor, qtd }; }),
   })});
-  $("cliente").value = ""; $("obs").value = ""; novoPedido.clear();
+  $("cliente").value = ""; $("telefone").value = ""; $("obs").value = ""; novoPedido.clear();
   renderNovoItens(); carregarPedidos();
 });
 
+// ---- lista de pedidos ----
 async function carregarPedidos() {
   const pedidos = await api("/api/pedidos");
   $("lista-pedidos").innerHTML = pedidos.map((p) => `
-    <div class="cartao pedido">
+    <div class="cartao pedido ${p.origem === "site" && p.status === "aberto" ? "novo-site" : ""}">
       <div class="topo-p">
-        <strong>${p.cliente || "Sem nome"}</strong>
-        <span class="selo ${p.status}">${p.status}</span>
+        <strong>${p.cliente || "Sem nome"} <small>#${p.id}</small></strong>
+        <span>
+          <span class="selo ${p.origem}">${p.origem === "site" ? "🌐 site" : "✍️ manual"}</span>
+          <span class="selo ${p.status}">${p.status}</span>
+        </span>
       </div>
       <span class="quando">${new Date(p.criado_em).toLocaleString("pt-BR", { day:"2-digit", month:"2-digit", hour:"2-digit", minute:"2-digit" })}</span>
-      <span class="itens">${p.itens.map((i) => `${i.qtd}x ${i.nome}`).join(" · ")}</span>
+      ${p.telefone ? `<span class="tel">📱 <a href="https://wa.me/55${p.telefone.replace(/^55/, "")}" target="_blank">${fmtTel(p.telefone.replace(/^55/, ""))}</a></span>` : ""}
+      <span class="itens">${p.itens.map((i) => `${i.qtd}x ${i.nome}${i.sabor ? ` (${i.sabor})` : ""}`).join(" · ")}</span>
       ${p.obs ? `<span class="itens">📝 ${p.obs}</span>` : ""}
       <strong>${R$(p.total_cents)}</strong>
       ${p.status === "aberto" ? `<div class="acoes">
@@ -236,30 +270,62 @@ $("lista-pedidos").addEventListener("click", async (e) => {
 // ---- produtos ----
 function renderProdutos() {
   $("lista-produtos").innerHTML = produtos.map((p) => {
-    const lucro = p.preco_cents - p.custo_cents;
-    return `<div class="linha-prod">
-      <span>${p.ativo ? "" : "⏸ "}${p.nome}<br>
-        <small>vende por ${R$(p.preco_cents)} · custa ${R$(p.custo_cents)} · <strong>sobra ${R$(lucro)}</strong></small></span>
-      <button class="botao claro" style="width:auto;margin:0;padding:0.4rem 0.8rem;font-size:0.85rem" data-edit="${p.id}">Mudar</button>
-    </div>`;
+    const lucro = (p.promo_cents ?? p.preco_cents) - p.custo_cents;
+    return `<details>
+      <summary><span>${p.ativo ? "" : "⏸ "}${p.destaque ? "❤ " : ""}${p.nome}</span>
+        <small>${R$(p.promo_cents ?? p.preco_cents)} · sobra ${R$(lucro)}</small></summary>
+      <div class="form-prod" data-form="${p.id}">
+        <label>Nome</label><input data-f="nome" value="${p.nome.replace(/"/g,"&quot;")}" />
+        <label>Descrição curta (site)</label><input data-f="desc" value="${p.desc_curta.replace(/"/g,"&quot;")}" />
+        <div class="duas">
+          <div><label>Preço (R$)</label><input data-f="preco" inputmode="decimal" value="${(p.preco_cents/100).toFixed(2).replace(".", ",")}" /></div>
+          <div><label>Custo (R$)</label><input data-f="custo" inputmode="decimal" value="${(p.custo_cents/100).toFixed(2).replace(".", ",")}" /></div>
+        </div>
+        <label>Preço de promoção (R$) — deixe vazio se não tiver</label>
+        <input data-f="promo" inputmode="decimal" value="${p.promo_cents ? (p.promo_cents/100).toFixed(2).replace(".", ",") : ""}" placeholder="sem promoção" />
+        <label>Sabores (separados por vírgula)</label>
+        <input data-f="sabores" value="${p.sabores.join(", ").replace(/"/g,"&quot;")}" />
+        <label class="check"><input type="checkbox" data-f="destaque" ${p.destaque ? "checked" : ""}/> Marcar como queridinho ❤</label>
+        <label class="check"><input type="checkbox" data-f="ativo" ${p.ativo ? "checked" : ""}/> À venda no site</label>
+        <label>Foto de verdade (aparece no site)</label>
+        <input type="file" accept="image/*" data-foto="${p.id}" />
+        ${p.foto ? `<p class="obs-mini">foto atual: <a href="${p.foto}" target="_blank">ver</a></p>` : ""}
+        <button class="botao" data-salvar="${p.id}">Salvar mudanças</button>
+      </div>
+    </details>`;
   }).join("");
 }
 $("lista-produtos").addEventListener("click", async (e) => {
-  const b = e.target.closest("[data-edit]");
+  const b = e.target.closest("[data-salvar]");
   if (!b) return;
-  const p = produtos.find((x) => x.id === +b.dataset.edit);
-  const nome = prompt("Nome do produto:", p.nome); if (nome === null) return;
-  const preco = prompt("Preço de venda (R$):", (p.preco_cents/100).toFixed(2).replace(".", ",")); if (preco === null) return;
-  const custo = prompt("Custo pra fazer (R$):", (p.custo_cents/100).toFixed(2).replace(".", ",")); if (custo === null) return;
-  const ativo = confirm("Deixar esse produto à venda? (OK = sim, Cancelar = pausar)");
-  await api(`/api/produtos/${p.id}`, { method:"PUT", body: JSON.stringify({ nome, preco_cents: centavos(preco), custo_cents: centavos(custo), ativo }) });
+  const form = document.querySelector(`[data-form="${b.dataset.salvar}"]`);
+  const f = (n) => form.querySelector(`[data-f="${n}"]`);
+  const promoTxt = f("promo").value.trim();
+  b.disabled = true;
+  await api(`/api/produtos/${b.dataset.salvar}`, { method:"PUT", body: JSON.stringify({
+    nome: f("nome").value, desc_curta: f("desc").value,
+    preco_cents: centavos(f("preco").value), custo_cents: centavos(f("custo").value),
+    promo_cents: promoTxt ? centavos(promoTxt) : null,
+    sabores: f("sabores").value.split(",").map((s) => s.trim()).filter(Boolean),
+    destaque: f("destaque").checked, ativo: f("ativo").checked,
+  })});
+  const arq = form.querySelector("[data-foto]").files[0];
+  if (arq) {
+    const fd = new FormData(); fd.append("foto", arq);
+    await fetch(`/api/produtos/${b.dataset.salvar}/foto`, { method:"POST", body: fd });
+  }
+  b.disabled = false;
   await carregarProdutos();
 });
 $("criar-produto").addEventListener("click", async () => {
   const nome = $("np-nome").value.trim();
   if (!nome) return alert("Escreve o nome do produto :)");
-  await api("/api/produtos", { method:"POST", body: JSON.stringify({ nome, preco_cents: centavos($("np-preco").value), custo_cents: centavos($("np-custo").value) }) });
-  $("np-nome").value = $("np-preco").value = $("np-custo").value = "";
+  await api("/api/produtos", { method:"POST", body: JSON.stringify({
+    nome, desc_curta: $("np-desc").value,
+    preco_cents: centavos($("np-preco").value), custo_cents: centavos($("np-custo").value),
+    sabores: $("np-sabores").value.split(",").map((s) => s.trim()).filter(Boolean),
+  })});
+  ["np-nome","np-desc","np-preco","np-custo","np-sabores"].forEach((i) => $(i).value = "");
   await carregarProdutos();
 });
 async function carregarProdutos() {
@@ -276,16 +342,19 @@ async function carregarMes() {
   const corpo = document.querySelector("#tabela-rank tbody");
   const maisLucro = [...r.ranking].sort((a, b) => b.lucro_cents - a.lucro_cents)[0];
   corpo.innerHTML = r.ranking.map((x) => `
-    <tr class="${maisLucro && x.nome === maisLucro.nome ? "destaque" : ""}">
-      <td>${x.nome}</td><td class="num">${x.qtd}</td>
+    <tr class="${maisLucro && x === r.ranking.find((y) => y.lucro_cents === maisLucro.lucro_cents) ? "destaque-linha" : ""}">
+      <td>${x.nome}${x.sabor ? `<br><small>${x.sabor}</small>` : ""}</td><td class="num">${x.qtd}</td>
       <td class="num">${R$(x.faturamento_cents)}</td><td class="num">${R$(x.lucro_cents)}</td>
     </tr>`).join("") || '<tr><td colspan="4">Sem vendas neste mês ainda.</td></tr>';
   $("conselho").textContent = maisLucro
-    ? `💡 O que mais deixa dinheiro no seu bolso é: ${maisLucro.nome}. A linha pintada é ele.`
+    ? `💡 O que mais deixa dinheiro no bolso: ${maisLucro.nome}${maisLucro.sabor ? ` de ${maisLucro.sabor}` : ""}. É a linha pintada.`
     : "";
 }
 
 async function carregarTudo() { await carregarProdutos(); await carregarPedidos(); }
+
+// pedidos do site chegam sozinhos: atualiza a cada 60s
+setInterval(() => { if (!$("app").hidden && !$("aba-pedidos").hidden) carregarPedidos(); }, 60000);
 
 // se já tem cookie válido, pula o PIN
 api("/api/produtos").then((ps) => { produtos = ps; $("tela-pin").hidden = true; $("app").hidden = false; renderProdutos(); renderNovoItens(); carregarPedidos(); }).catch(() => {});

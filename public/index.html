@@ -4,87 +4,115 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vovó Linlin — Pão de Queijo</title>
-  <meta name="description" content="Pão de queijo artesanal feito com amor. Encomendas pelo WhatsApp: congelado ou assado na hora. São Paulo." />
+  <meta name="description" content="Pão de queijo artesanal por encomenda em São Paulo. Tradicional e recheados, feitos com amor. Peça pelo site ou WhatsApp." />
   <meta property="og:title" content="Vovó Linlin — Pão de Queijo" />
-  <meta property="og:description" content="Crocante por fora, macio por dentro. Encomende pelo WhatsApp." />
+  <meta property="og:description" content="Crocante por fora, macio por dentro. Faça sua encomenda." />
   <meta property="og:image" content="https://vovolinlin.blictech.com.br/assets/logo.png" />
   <link rel="icon" href="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;600;800&family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;600;800;900&family=Patrick+Hand&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
+<div class="promo-bar" id="promo-bar" hidden></div>
+
 <header class="topo">
   <a class="marca" href="#inicio">
-    <img src="assets/logo.png" alt="Logo da Vovó Linlin" width="44" height="44" />
+    <img src="assets/logo.png" alt="" width="40" height="40" />
     <span>vovó linlin</span>
   </a>
-  <a class="btn-zap" href="https://wa.me/5511952855997?text=Ol%C3%A1%2C%20vov%C3%B3%20Linlin!%20Quero%20encomendar%20p%C3%A3o%20de%20queijo%20%F0%9F%A7%80" target="_blank" rel="noreferrer">
-    Encomendar
+  <a class="link-zap" href="https://wa.me/5511952855997" target="_blank" rel="noreferrer" aria-label="WhatsApp da vovó">
+    (11) 95285-5997
   </a>
 </header>
 
 <main>
   <section class="hero" id="inicio">
-    <div class="hero-arte">
-      <img src="assets/logo.png" alt="Vovó Linlin segurando uma colher de pau ao lado de uma cesta de pães de queijo. Arte feita pelo neto." />
-      <p class="credito">arte: feita pelo neto da vovó ♡</p>
+    <p class="hero-eyebrow">pão de queijo artesanal · são paulo</p>
+    <h1>Feito com <em>amor</em>,<br />do jeito que vó faz</h1>
+    <p class="hero-sub">Crocante por fora, macio por dentro. Do tradicional ao recheado de carne seca, tudo por encomenda, tudo fresquinho.</p>
+    <div class="hero-cta">
+      <a class="btn primario" href="#cardapio">Fazer meu pedido</a>
+      <a class="btn fantasma" href="https://wa.me/5511952855997?text=Ol%C3%A1%2C%20vov%C3%B3%20Linlin!" target="_blank" rel="noreferrer">Falar com a vovó</a>
     </div>
-    <div class="hero-texto">
-      <h1>Pão de queijo <em>feito com amor</em></h1>
-      <p class="sub">Do tradicional ao recheado especial, vendido por unidade. Encomendou, a vovó prepara.</p>
-      <div class="lousa" role="img" aria-label="Lousa escrita a giz com as qualidades do pão de queijo">
-        <ul>
-          <li>Crocante por fora</li>
-          <li>Macio por dentro</li>
-          <li>Queijos selecionados</li>
-        </ul>
-      </div>
-      <a class="btn-zap grande" href="#pedido">Montar meu pedido ↓</a>
+    <div class="hero-visual">
+      <img class="cesta" src="assets/cesta.png" alt="Cesta de pães de queijo da Vovó Linlin" />
+      <img class="selo" src="assets/logo.png" alt="" aria-hidden="true" />
     </div>
+    <ul class="hero-provas">
+      <li>🧀 Queijos selecionados</li>
+      <li>🔥 Assado no dia</li>
+      <li>💬 Pedido cai direto no caderninho da vovó</li>
+    </ul>
   </section>
 
-  <section class="faixa" aria-hidden="true"></section>
+  <div class="scallop" aria-hidden="true"></div>
 
-  <section class="cardapio" id="pedido">
-    <h2>Monte seu pedido</h2>
-    <p class="dica">Escolha as quantidades e envie direto no WhatsApp da vovó. Ela responde rapidinho.</p>
-
-    <div class="produtos" id="produtos"></div>
-
-    <div class="resumo" id="resumo" hidden>
-      <div class="resumo-linha">
-        <span id="resumo-itens">0 itens</span>
-        <strong id="resumo-total">R$ 0,00</strong>
-      </div>
-      <button class="btn-zap grande" id="enviar">Enviar pedido no WhatsApp</button>
-      <p class="mini">O pedido abre no seu WhatsApp já escrito. Pagamento e entrega você combina com a vovó.</p>
-    </div>
+  <section class="cardapio" id="cardapio">
+    <h2>Cardápio da vovó</h2>
+    <p class="dica">Toque no sabor, escolha a quantidade. Preço por unidade.</p>
+    <div class="produtos" id="produtos"><p class="carregando">abrindo o forno…</p></div>
   </section>
 
   <section class="como">
     <h2>Como funciona</h2>
     <ol>
-      <li><strong>Você pede</strong> aqui pelo site ou direto no WhatsApp.</li>
-      <li><strong>A vovó prepara</strong>: congelado pra assar em casa ou assado na hora.</li>
-      <li><strong>Retirada ou entrega</strong>, é só combinar com ela no zap.</li>
+      <li><strong>Monte o pedido</strong> aqui no site, do seu jeito.</li>
+      <li><strong>Ele cai no caderninho da vovó</strong> na hora, com seu nome e WhatsApp.</li>
+      <li><strong>Ela te chama</strong> pra combinar retirada ou entrega e o pagamento.</li>
     </ol>
   </section>
 
   <section class="sobre">
-    <div class="sobre-texto">
-      <h2>Quem é a Vovó Linlin?</h2>
-      <p>Receita de família, mão de vó e queijo de verdade. Cada fornada sai do jeito que pão de queijo tem que ser: crocante por fora, macio e puxento por dentro.</p>
-      <p>Feito em casa, em São Paulo, com carinho de vó em cada bolinha.</p>
-    </div>
+    <h2>Quem faz</h2>
+    <p>Receita de família e mão de vó: cada fornada sai do jeito que pão de queijo tem que ser. Feito em casa, em São Paulo, com queijo de verdade e carinho de sobra.</p>
   </section>
 </main>
 
+<div class="barra-pedido" id="barra-pedido" hidden>
+  <div class="barra-info">
+    <span id="barra-itens">0 un</span>
+    <strong id="barra-total">R$ 0,00</strong>
+  </div>
+  <button class="btn primario" id="abrir-checkout">Fechar pedido</button>
+</div>
+
+<dialog id="checkout">
+  <div class="cabecalho-dialog">
+    <h2 id="checkout-titulo">Seu pedido</h2>
+    <button class="fechar" id="fechar-checkout" aria-label="Fechar">×</button>
+  </div>
+
+  <div id="checkout-form">
+    <ul class="lista-checkout" id="lista-checkout"></ul>
+    <p class="total-checkout">Total: <strong id="checkout-total"></strong></p>
+    <label for="c-nome">Seu nome</label>
+    <input id="c-nome" autocomplete="name" placeholder="como a vovó pode te chamar?" />
+    <label for="c-tel">Seu WhatsApp (com DDD)</label>
+    <input id="c-tel" inputmode="tel" autocomplete="tel" placeholder="11 91234-5678" />
+    <label for="c-obs">Algum recado? <small>(opcional)</small></label>
+    <input id="c-obs" placeholder="ex.: preciso pra sábado de manhã" />
+    <p class="erro" id="checkout-erro"></p>
+    <button class="btn primario largo" id="confirmar">Confirmar pedido</button>
+    <p class="mini">Sem pagamento agora: a vovó te chama no WhatsApp pra combinar tudo.</p>
+  </div>
+
+  <div id="checkout-sucesso" hidden>
+    <p class="sucesso-emoji">🧀</p>
+    <h3>Pedido <span id="sucesso-id"></span> anotado!</h3>
+    <p>Já está no caderninho da vovó. Ela te chama no WhatsApp pra combinar a entrega.</p>
+    <a class="btn zap largo" id="sucesso-zap" target="_blank" rel="noreferrer">Mandar um oi pra vovó agora</a>
+    <button class="btn fantasma largo" id="sucesso-fechar">Voltar ao site</button>
+  </div>
+</dialog>
+
 <footer>
+  <img src="assets/logo.png" alt="" width="72" height="72" />
   <p><strong>Encomendas:</strong> <a href="https://wa.me/5511952855997" target="_blank" rel="noreferrer">(11) 95285-5997</a> · São Paulo, SP</p>
-  <p class="mini">© <span id="ano"></span> Vovó Linlin Pão de Queijo · <a href="https://leonardoflores.dev.br" target="_blank" rel="noreferrer">desenvolvido com carinho por Leonardo Flores</a></p>
+  <p class="mini">arte da marca feita em família ♡</p>
+  <p class="mini">© <span id="ano"></span> Vovó Linlin · <a href="https://leonardoflores.dev.br" target="_blank" rel="noreferrer">desenvolvido com carinho por Leonardo Flores</a></p>
 </footer>
 
 <script src="js/pedido.js"></script>
