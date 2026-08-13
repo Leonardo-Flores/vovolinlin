@@ -64,56 +64,30 @@ a { color: var(--marrom-2); }
 /* ---------- hero ---------- */
 main { max-width: 64rem; margin: 0 auto; padding: 0 1.1rem; }
 .hero {
-  padding: 1.6rem 0 0.5rem; text-align: center;
-  display: grid; gap: 0.2rem 2.5rem; align-items: center;
+  padding: 1.4rem 0 0.5rem; text-align: center;
+  display: grid; gap: 1.4rem; align-items: center;
 }
 @media (min-width: 820px) {
-  .hero { grid-template-columns: 1.2fr 0.8fr; text-align: left; padding-top: 2.2rem; }
-  .hero > * { grid-column: 1; }
-  .hero .hero-visual { grid-column: 2; grid-row: 1 / span 4; }
-  .hero .hero-cta { margin: 0; flex-direction: row; max-width: none; }
-  .hero .hero-sub { margin-left: 0; }
-  .hero .hero-provas { margin-left: 0; justify-content: flex-start; }
+  .hero { grid-template-columns: 1.1fr 0.9fr; text-align: left; padding-top: 2rem; }
+  .hero-marca { justify-items: start; }
 }
 .hero-eyebrow {
   font-size: 0.75rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--dourado-2); margin-bottom: 0.5rem;
 }
-.hero h1 {
-  font-family: var(--display); font-size: clamp(2.2rem, 8.5vw, 3.6rem);
-  line-height: 1.08; text-wrap: balance;
-}
-.hero h1 em { font-style: normal; color: var(--dourado-2); position: relative; white-space: nowrap; }
-.hero h1 em::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: 0.02em; height: 0.28em;
-  background: var(--creme-2); z-index: -1; border-radius: 99px;
-}
-.hero-sub { margin: 0.9rem auto 1.3rem; max-width: 30rem; font-size: 1.05rem; }
+.hero-sub { margin: 0.2rem 0 0.4rem; max-width: 30rem; font-size: 1rem; }
 .hero-cta { display: flex; flex-direction: column; gap: 0.6rem; max-width: 20rem; margin: 0 auto; }
 
-.hero-visual { position: relative; max-width: 15rem; margin: 1rem auto 0.4rem; }
-@media (min-width: 820px) { .hero-visual { max-width: 19rem; margin: 0; } }
+.hero-visual { position: relative; max-width: 17rem; margin: 0 auto; }
+@media (min-width: 820px) { .hero-visual { max-width: 23rem; } }
 .hero-visual::before {
   /* brilho quente atrás do medalhão */
   content: ""; position: absolute; inset: -12%;
   background: radial-gradient(circle, rgba(221, 159, 54, 0.35), transparent 65%);
   z-index: -1;
 }
-.hero-visual .medalha {
-  filter: drop-shadow(0 14px 26px rgba(69, 41, 26, 0.3));
-  margin: 0 auto;
-}
 @media (prefers-reduced-motion: no-preference) {
-  .hero-visual .medalha { animation: chegar 0.7s ease both; }
-  @keyframes chegar { from { opacity: 0; transform: translateY(14px) scale(0.97); } to { opacity: 1; } }
-}
-.hero-provas {
-  list-style: none; padding: 0; margin: 1rem auto 0; max-width: 34rem;
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 0.45rem;
-}
-.hero-provas li {
-  font-size: 0.82rem; font-weight: 700; padding: 0.35rem 0.8rem;
-  background: var(--branco); border: 1.5px solid var(--creme-2); border-radius: 99px;
+    @keyframes chegar { from { opacity: 0; transform: translateY(14px) scale(0.97); } to { opacity: 1; } }
 }
 
 /* ---------- divisor babado ---------- */
@@ -248,3 +222,49 @@ footer .mini { opacity: 0.75; margin: 0; }
 .preparo-card h3 { margin-bottom: 0.3rem; }
 .preparo-card p { font-size: 0.95rem; color: var(--marrom-2); }
 .mini-nota { font-size: 0.85rem; color: var(--marrom-2); margin-top: 0.8rem; }
+
+/* ---------- hero: a arte recomposta ---------- */
+.hero-marca { display: grid; gap: 0.55rem; justify-items: center; }
+@media (min-width: 820px) { .hero-marca { justify-items: start; } }
+
+.nome-script { font-family: var(--display); line-height: 0.82; color: var(--marrom); margin: 0; }
+.nome-script .vovo { display: block; font-size: clamp(1.9rem, 5vw, 2.6rem); transform: rotate(-4deg); }
+.nome-script .linlin { display: block; font-size: clamp(3.6rem, 10vw, 5.6rem); transform: rotate(-4deg); }
+
+.ribbon {
+  position: relative; display: inline-block; margin: 0.5rem 0 0.1rem;
+  background: linear-gradient(180deg, #ecb54a, var(--dourado));
+  color: var(--marrom); font-weight: 900; letter-spacing: 0.14em; font-size: 0.95rem;
+  padding: 0.42rem 1.5rem; box-shadow: 0 3px 8px rgba(69, 41, 26, 0.2);
+  transform: rotate(-2deg);
+}
+.ribbon::before, .ribbon::after {
+  content: ""; position: absolute; top: 6px; width: 1.4rem; height: 100%;
+  background: var(--dourado-2); z-index: -1;
+}
+.ribbon::before { left: -1rem; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 45% 50%); }
+.ribbon::after { right: -1rem; clip-path: polygon(0 0, 100% 0, 55% 50%, 100% 100%, 0 100%); }
+
+.amor {
+  font-family: var(--giz-fonte); font-size: 1.5rem; color: var(--marrom-2);
+  transform: rotate(-2deg); margin: 0;
+}
+
+.hero-nota { font-size: 0.85rem; font-weight: 700; color: var(--marrom-2); margin-top: 0.2rem; }
+
+.hero-visual .personagem { filter: drop-shadow(0 18px 30px rgba(69, 41, 26, 0.3)); }
+.h-heart {
+  position: absolute; color: var(--marrom-2); opacity: 0.55; user-select: none;
+  font-size: 1.6rem; z-index: 1;
+}
+.h-heart.h1a { top: 4%; left: -6%; font-size: 2rem; transform: rotate(-14deg); }
+.h-heart.h2a { top: 30%; right: -9%; color: var(--dourado-2); transform: rotate(12deg); }
+.h-heart.h3a { bottom: 12%; left: -10%; font-size: 1.3rem; transform: rotate(8deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .h-heart { animation: flutuar 4.5s ease-in-out infinite; }
+  .h-heart.h2a { animation-delay: 1.4s; }
+  .h-heart.h3a { animation-delay: 2.6s; }
+  @keyframes flutuar { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+}
+.marca img { height: 44px; width: auto; }
+footer img { height: 88px; width: auto; }

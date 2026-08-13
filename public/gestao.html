@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Caderninho da Vovó</title>
 <meta name="robots" content="noindex" />
-<link rel="icon" href="/assets/vovo-selo.png" />
+<link rel="icon" href="/assets/vovo-cabeca.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet" />
@@ -17,7 +17,7 @@
   * { box-sizing: border-box; margin: 0; }
   body { font-family: "Nunito", system-ui, sans-serif; background: var(--creme); color: var(--marrom); font-size: 18px; line-height: 1.5; }
   header { display:flex; align-items:center; gap:0.7rem; padding:0.8rem 1rem; background:var(--branco); border-bottom:2px solid var(--creme2); position:sticky; top:0; z-index:5; }
-  header img { width:44px; height:44px; border-radius:50%; }
+  header img { height:48px; width:auto; }
   header h1 { font-family:"Lobster Two",cursive; font-size:1.35rem; }
   main { max-width: 46rem; margin: 0 auto; padding: 1rem 1rem 4rem; }
 
@@ -85,7 +85,7 @@
   .obs-mini { font-size:0.85rem; color:var(--marrom2); margin-top:0.6rem; }
 
   #tela-pin { max-width:22rem; margin:12vh auto; text-align:center; padding:0 1rem; }
-  #tela-pin img { width:110px; height:110px; border-radius:50%; margin:0 auto 1rem; }
+  #tela-pin img { height:120px; width:auto; margin:0 auto 1rem; }
   #tela-pin input { text-align:center; font-size:1.6rem; letter-spacing:0.4rem; }
   .erro { color:var(--vermelho); font-weight:800; margin-top:0.5rem; min-height:1.4rem; }
   [hidden] { display:none !important; }
@@ -94,7 +94,7 @@
 <body>
 
 <div id="tela-pin">
-  <img src="/assets/vovo-selo.png" alt="Vovó Linlin" />
+  <img src="/assets/vovo-cabeca.png" alt="Vovó Linlin" />
   <h1 style="font-family:'Lobster Two',cursive">Caderninho da Vovó</h1>
   <label for="pin">Digite sua senha</label>
   <input id="pin" type="password" inputmode="numeric" autocomplete="current-password" />
@@ -104,7 +104,7 @@
 
 <div id="app" hidden>
 <header>
-  <img src="/assets/vovo-selo.png" alt="" />
+  <img src="/assets/vovo-cabeca.png" alt="" />
   <h1>Caderninho da Vovó</h1>
 </header>
 <main>
