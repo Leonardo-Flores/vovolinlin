@@ -99,11 +99,12 @@ main { max-width: 64rem; margin: 0 auto; padding: 0 1.1rem; }
   background: radial-gradient(circle, rgba(221, 159, 54, 0.35), transparent 65%);
   z-index: -1;
 }
-.hero-visual .medalha {
-  filter: drop-shadow(0 16px 30px rgba(69, 41, 26, 0.3));
+.hero-visual .corpo {
+  filter: drop-shadow(0 16px 30px rgba(69, 41, 26, 0.28));
+  margin: 0 auto;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-visual .medalha { animation: chegar 0.7s ease both; }
+  .hero-visual .corpo { animation: chegar 0.7s ease both; }
   @keyframes chegar { from { opacity: 0; transform: translateY(14px) scale(0.97); } to { opacity: 1; } }
 }
 .hero-provas {
