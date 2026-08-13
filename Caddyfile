@@ -1,3 +1,5 @@
 vovolinlin.leonardoflores.dev.br {
     reverse_proxy app:8080
 }
+
+import /etc/caddy/extra/*.caddy

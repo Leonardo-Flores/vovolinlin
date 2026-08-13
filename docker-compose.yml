@@ -26,6 +26,8 @@ services:
     ports: ["80:80", "443:443"]
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
+      - /opt/caddy-extra:/etc/caddy/extra
+      - /opt/painel:/srv/painel:ro
       - caddy_data:/data
     depends_on:
       - app
